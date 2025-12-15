@@ -5,7 +5,12 @@ def validate_entry(name, pin):
     # TODO: Implement this function
     # Return True if valid, False otherwise
     if name == "Director" and pin == 1122:
-        Access = True
+        access = True
+    elif name == "Security" and pin == 9900:
+        access = True
+    else:
+        access = False
+    return access
      
 
 # Test your code here
