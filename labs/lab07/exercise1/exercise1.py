@@ -1,5 +1,19 @@
 def process_actions(catalog, actions):
     # TODO: Your code here
+    for action, isbn in actions:
+        # Skip if ISBN not in catalog
+        if isbn not in catalog:
+            continue
+
+        if action == "BORROW":
+            # Only decrement if copies are available
+            if catalog[isbn] > 0:
+                catalog[isbn] -= 1
+
+        elif action == "RETURN":
+            catalog[isbn] += 1
+
+    return catalog
     pass
 
 

@@ -9,10 +9,10 @@ def analyze_performance(lap_times):
         first_half = len(lap_times) // 2 + 1
     for i in range(first_half):
         total_first_half += lap_times[i]
-    average_first_half = total_first_half / (len(lap_times)/2)
+    average_first_half = total_first_half / first_half
     for j in range(first_half ,len(lap_times)):
         total_second_half += lap_times[j]
-    average_second_half = total_second_half / (len(lap_times)/2)
+    average_second_half = total_second_half / (len(lap_times)//2)
 
     if average_first_half < average_second_half:
         return True
@@ -23,6 +23,6 @@ def analyze_performance(lap_times):
 
 
 # Test
-laps = [50, 55, 60, 65, 70]
+laps = [40, 42, 44, 46, 50, 55, 60]
 result = analyze_performance(laps)
 print(f"Faded: {result}")  # Expected: True
