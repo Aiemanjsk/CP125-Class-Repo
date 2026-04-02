@@ -4,9 +4,7 @@
 def filter_passing_scores(input_file, output_file):
     infile = open(input_file, 'r')
     outfile = open(output_file, 'w')
-
     count = 0
-
     for line in infile:
         parts = line.split(" ")
         
