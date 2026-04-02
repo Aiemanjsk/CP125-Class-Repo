@@ -17,16 +17,40 @@ def calculate_order_total(products_file, order_file, output_file):
     input1 = open(products_file, "r")
     input2 = open(order_file, "r")
     output = open(output_file, "w")
+
     names1 = input1.readlines()
     names2 = input2.readlines()
-    for i in range (len(products_file)):
+
+    price_dict = {}
+    cost_list = []
+    grand_total = 0
+
+    for line in names1[1:]:
+        data = line.strip().split(",")
+        product_id = data[0]
+        price = float(data[2])
+        price_dict[product_id] = price
+
+    output.write("product_id,total_cost\n")
+
+    for quantity in names2[1:]:
+        data = quantity.strip().split(",")
+        product_id = data[0]
+        quantity = int(data[1])
+
+        price = price_dict[product_id]
         total_cost = price * quantity
-        cost_list.add(total_cost)
+        grand_total += total_cost
+
+        cost_list.append(total_cost)
+
+        output.write(product_id + "," + format(total_cost, ".2f") + "\n")
 
     input1.close()
     input2.close()
     output.close()
-    return cost_list
+
+    return grand_total
 
 
     pass
