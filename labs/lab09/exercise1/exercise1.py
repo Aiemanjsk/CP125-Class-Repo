@@ -12,4 +12,7 @@ def explore_data(filename):
         "math_average": math_average,
         "highest_math_student": highest_math_student
     }
+result = explore_data("labs/lab09/data/students.csv")
+print(result)
 
+pass
